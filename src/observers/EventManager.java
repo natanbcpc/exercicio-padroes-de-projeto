@@ -18,7 +18,7 @@ public class EventManager {
 
     public void notify(String message) {
         for (EventListener listener : listeners) {
-            listener.notifyAlert(message);
+            listener.createAlert(message);
         }
     }
 }

@@ -1,5 +1,5 @@
 package abstractfactory;
 
 public interface Alert {
-    void notifyAlert();
+    void notifyAlert(String message);
 }

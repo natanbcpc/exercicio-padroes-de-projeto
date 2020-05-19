@@ -1,9 +1,16 @@
 package abstractfactory;
 
-public class EmailAlert implements Alert {
+import listeners.EventListener;
+
+public class EmailAlert implements Alert, EventListener {
 
     @Override
-    public void notifyAlert() {
-        System.out.println("Email");
+    public void notifyAlert(String message) {
+        System.out.println(message);
+    }
+
+    @Override
+    public void createAlert(String message) {
+        notifyAlert(message);
     }
 }
