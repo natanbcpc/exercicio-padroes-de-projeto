@@ -1,5 +1,5 @@
 package listeners;
 
 public interface EventListener {
-    void createAlert(String message);
+    void startProcedure(String message);
 }

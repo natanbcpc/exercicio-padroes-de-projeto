@@ -1,24 +1,36 @@
 package observers;
 
 import listeners.EventListener;
+import weather.Priority;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static weather.Priority.HIGH;
+import static weather.Priority.LOW;
 
 public class EventManager {
-    List<EventListener> listeners = new ArrayList<>();
+    Map<Priority, List<EventListener>> listeners;
 
-    public void subscribe(EventListener listener) {
-        listeners.add(listener);
+    public EventManager() {
+        this.listeners = new HashMap<>();
+        this.listeners.put(LOW, new ArrayList<>());
+        this.listeners.put(HIGH, new ArrayList<>());
     }
 
-    public void unsubscribe(EventListener listener) {
-        listeners.remove(listener);
+    public void subscribe(Priority priority, EventListener listener) {
+        listeners.get(priority).add(listener);
     }
 
-    public void notify(String message) {
-        for (EventListener listener : listeners) {
-            listener.createAlert(message);
+    public void unsubscribe(Priority priority, EventListener listener) {
+        listeners.get(priority).remove(listener);
+    }
+
+    public void notify(Priority priority, String event) {
+        for (EventListener listener : listeners.get(priority)) {
+            listener.startProcedure(event);
         }
     }
 }
