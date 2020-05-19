@@ -16,7 +16,7 @@ public class Application {
         eventManager.subscribe(HIGH, new WorkflowProcedureFactory().createProcedure());
 
         WeatherController weatherController = new WeatherController(eventManager);
-        weatherController.updateWeather(60, 50);
-        weatherController.updateWeather(50, 70);
+        weatherController.updateWeather(60, 0.5f);
+        weatherController.updateWeather(50, 0.7f);
     }
 }
